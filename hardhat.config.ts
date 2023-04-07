@@ -6,6 +6,11 @@ import 'hardhat-contract-sizer'
 import { HardhatUserConfig } from 'hardhat/config'
 import { SolcUserConfig } from 'hardhat/types'
 import 'solidity-coverage'
+import "hardhat-deploy-ethers";
+import "hardhat-deploy";
+
+let wallet = require('./wallet.json');
+
 
 const DEFAULT_COMPILER_SETTINGS: SolcUserConfig = {
   version: '0.7.6',
@@ -36,6 +41,11 @@ if (process.env.RUN_COVERAGE == '1') {
 }
 
 const config: HardhatUserConfig = {
+  namedAccounts: {
+    deployer: {
+      default: 0, // here this will by default take the first account as deployer
+    },
+  },
   networks: {
     hardhat: {
       allowUnlimitedContractSize: false,
@@ -72,6 +82,16 @@ const config: HardhatUserConfig = {
     },
     polygon: {
       url: `https://polygon-mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`,
+    },
+    evmos: {
+      url: `https://json-rpc.evmos.blockhunters.org`,
+      chainId: 9001,
+      accounts: [wallet.evmosMainKey]
+    },
+    evmostestnet: {
+      url: `https://eth.bd.evmos.dev:8545`,
+      chainId: 9000,
+      accounts: [wallet.evmosTestKey]
     },
   },
   solidity: {

@@ -11,6 +11,8 @@ The main change compared to v1.0.2 is the addition of a new configuration value 
 | Network          | Explorer                                                                                 |
 | ---------------- | ---------------------------------------------------------------------------------------- |
 | Polygon          | https://polygonscan.com/address/0x8c696deF6Db3104DF72F7843730784460795659a               |
+| Evmos Testnet    | 0xAea1A2EFA80337055CfE8e747314939D886e7721              |
+
 
 v1.0.2
 
